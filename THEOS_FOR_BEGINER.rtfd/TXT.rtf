@@ -1,0 +1,1723 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier-Oblique;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red52\green52\blue52;\red0\green0\blue233;
+\red135\green135\blue135;\red234\green234\blue234;\red255\green255\blue255;\red53\green65\blue117;\red210\green0\blue53;
+\red0\green0\blue109;\red14\green110\blue109;\red14\green114\blue164;\red135\green136\blue117;\red133\green0\blue2;
+\red17\green137\blue135;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl660\sa118
+
+\f0\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Introduction\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This is a guide written from my perspective. I am writing this as a way to kick-start you into development. It is HIGHLY recommended that you continue to read more material such as the {\field{\*\fldinst{HYPERLINK "http://iphonedevwiki.net/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 iphone dev wiki}}., the intermediate/advanced sections and so on. You should most definitely read the {\field{\*\fldinst{HYPERLINK "http://www.google.se/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 best practices}} also.\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 This guide is currently being updated/rewritten for iOS7 etc. and may not be 100% perfect at the moment.\cb1 \
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Who is this for\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 It is for someone who is (ideally) comfortable with programming, interested in jailbroken programming but are having trouble finding concrete advice on how to start.\
+If you already have experience with jailbroken development, chances are you already know everything in this guide. You might find something of value in the advanced section though.\
+Good luck..\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Credits\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 jontelang\uc0\u8232 codyd51\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Videos\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 To aid in getting started I have, while writing this guide, made recordings of (almost) every step of the way. The video series shows the whole process from scratch. From setting up a fresh macbook with the development environment to coding a tweak and finally to submit it to a repo.\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "http://www.youtube.com/watch?v=5XyoTtfCiMY"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Setting up the development environment}} - Some parts are skippable, I am spending quite some time trying to install apt/ldid which may not be needed.\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://www.youtube.com/watch?v=v7-k8BJ5xvw"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Creating the tweak - part 1}} - This shows the initial stages of a simple tweak, the very bare basics.\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://www.youtube.com/watch?v=sXWaz2Je0HY"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Creating the tweak - part 2}} - This video shows how to add settings, look at output and such things.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 More\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Another series made by Sassoty can be found {\field{\*\fldinst{HYPERLINK "http://www.youtube.com/watch?v=lRoXdqk-w-U&list=PLFfSWxWm1or7fqB340OYjF8deWRWSDytc"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 here}}.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Environment setup\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This chapter will take you through the setup and installation of everything you need to get started with iOS tweak development. Note that this is not the only way (by far) to do it, you may need some extra/fewer steps to get it working on you personal setup.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 What you will need\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This is a basic list of what you will need to begin developing. This is by no means the definitive list of things as the requirements can change depending on your current setup. It is, for example, possible to develop on your device, on linux and even windows. This guide, however, will only cover from a OSX perspective.\
+Macbook\uc0\u8232 Xcode\u8232 Theos\u8232 DPKG\u8232 LDID\u8232 Jailbroken iOS device with these tweaks/tools\u8232 \'a0\'a0\'a0 - OpenSSH\u8232 \'a0\'a0\'a0 - APT Strict 0.7\u8232 \'a0\'a0\'a0 - iOS Toolchain\u8232 \'a0\'a0\'a0 - BigBoss recommended tools\u8232 Patience\u8232 Some objective-c knowledge\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Xcode\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 You can download Xcode from the App Store for free. After the installation of Xcode you should start it, go to the preferences, downloads, and find "
+\i \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Command line tools
+\i0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 " and click install.\
+\
+Without this the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  command will not work (for example).\
+Alternatively you can open the terminal and write 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 xcode-select --install
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 DPKG\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This tool requires you to first install {\field{\*\fldinst{HYPERLINK "http://www.macports.com/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 macports}}. After installation you write 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 sudo port install dpkg
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  in the terminal.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 LDID\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 You can download {\field{\*\fldinst{HYPERLINK "http://cl.ly/3w1N0T1l0B3D"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 this file}} [{\field{\*\fldinst{HYPERLINK "https://www.dropbox.com/s/c2yhmzhi0n6s5pg/ldid"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Mirror}}] and put it into your 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/bin/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  folder.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Theos\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Download 
+\i \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 theos
+\i0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  from DHowetts {\field{\*\fldinst{HYPERLINK "https://github.com/DHowett/theos"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 github repo}} and unzip it to 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (You may have to create this folder).\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 NOTE: The location is not actually important but it makes it easier for me to write this.\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 To verify that it works open your 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 terminal
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and write 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/bin/nic.pl
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 , this should show you a menu like this.\
+\
+You can exit out of this with 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 CTRL + C
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (OSX Terminal).\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Headers\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 You can get some headers from {\field{\*\fldinst{HYPERLINK "http://www.github.com/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 github}}. For iOS 6 I've had great times with {\field{\*\fldinst{HYPERLINK "https://github.com/nst/iOS-Runtime-Headers"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 these}}. I just keep these in some random directory and use them as a manual "dictionary" where I search trhough them.\
+You should put your headers in the directory 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/include/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . I do not remember where I got mine (this was over a year ago) but through some trail and error I managed to get a compiling setup. I am using {\field{\*\fldinst{HYPERLINK "http://www.jontelang.com/guide/resources/include.zip"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 these headers}}.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Verify that everything works\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 First, open the terminal and 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 cd
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to your 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ~/Desktop/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . Write the command
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/bin/nic.pl/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and choose the "tweak" option, finish the wizard and 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 cd
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 into the directory and write 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . This will show you whether the compilation (etc) worked or not. Hopefully it worked fine.\
+Write 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 export THEOS_DEVICE_IP=XX
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  where 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 XX
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  is the actual IP of your iOS device.\
+Now run the command 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make package install
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and enter your devices password (default is 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 alpine
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ). Your device should respring and this should mean that the tweak has successfully been transferred to your device. You can verify by looking in Cydia's installed packages.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Your first tweak\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 .. will be called "
+\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SliderChanger
+\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 " and it will be a tweak that changes the text of the lockscreen slider. Yes this has been done before but it is rather easy and a good get-started project.\
+This chapter will guide you through setting up the project, finding the relevant classes, hooking into them to change them, setting up/using a preference-pane (settings) and lastly some info about submitting a tweak to an official repo. This chapter will not go into any depths and should be mainly be used as a way for you to get started with as little friction as possible.\
+Let's go.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The project\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Start by going to your terminal and create a new theos project with the
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/bin/nic.pl
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  command. Choose the tweak option and follow the wizard.\
+\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 TIP: To avoid having to rewrite the "com.yourcompany" part each time you make a new tweak you can open the actual "nic.pl" file, search for "com.yourcompany" and replace it with your preffered name. In my case I changed it to "com.jontelang".\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Name the tweak "SliderChanger". In my case it became "com.jontelang.sliderchanger".\
+After you have finished you should end up with a directoy like this.\
+\
+Run 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make package install
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and make sure the tweak is listed under S in the cydia installed packages section.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The research\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 I'd love for you to just be able to get into the coding and do the tweak instantly. But do you even know where to begin? Probably not. The next step is to dig into your headers, get used to it because you will spend an increbible amount of time reading them. It gets easier after a while.\
+With this project though, I will give you some hints. We are looking for the lockscreen-slider-bar-text right. So firstly we look for the lockscreen. I happen to know that the lockscreen is called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SBLockScreenView
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . So open this up and look/search for something that could have to do with the 'slide to unlock' text. There seems to be a method called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -(void)setCustomSlideToUnlockText:(id)arg1
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  that could be interesting. This method is pretty well-named, and we are fairly sure that this is the actual code we are looking for.\
+In fact, it IS the code we are looking for so I will just continue with the tutorial instead and you will understand how to "console-log-research" other classes in the future. This next line may not make 100% practical sense now, but it will later. To "console-log-research" you will later just 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %hook
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  a bunch of correctly-sounding classes, hijack their methods and log them to find the things you want.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Console output\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Console output is what you will be looking at when developing tweaks. The might be a way to use a debugger but that's nothing I've used so I will stick to 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NSLog
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .\
+Plug your device into your computer with USB. Open 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Xcode
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 , click 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Windows
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  in the menu and choose the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Organizer
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . Your device should show up on the left side and you should also see an option named "console". Click this and you should see a giant wall of text. This is your devices "syslog" and this is where lots of things get logged, including anything that is "
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NSLog
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ged".\
+\
+Keep this in mind, as this is where you will be looking at some point or another.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The code\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Time to write some actual code.\
+Open 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Tweak.xm
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and remove all pre-written text. We will be working the class from the "The research" chapter called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SBALockScreenView
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and its method 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -(void)setCustomSlideToUnlockText:(id)arg1
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . In your 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Tweak.xm
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  write the following.\
+\pard\pardeftab720\sl486
+
+\f2\b \cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 hook SBLockScreenView\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )setCustomSlideToUnlockText
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 id
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )arg1\
+\{\
+    arg1 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SliderChanger"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 orig(arg1);\
+\}\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 end\
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 This is pretty straight forward. You are "hooking" into the class 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SBLockScreenView
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 and hijacking the method 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 setCustomSlideToUnlockText
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . The argument 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 arg1
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  may say 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 id
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  but in reality it is an 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NSString
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . So we reset the argument to
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @"SliderChanger"
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and then we call the original method with the updated argument. We do this by calling 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %orig(arg1)
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .\
+We then close the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %hook
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  with 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %end
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .\
+Now go to the terminal again and write 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make package install
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to install the new tweak to your device. By now it should have changed the "slide to unlock" to "SliderChanger".\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The settings\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 It is sometimes good to have settings for your tweaks. In the case of this tweak the user probably wants to be able to set the text to something else.\
+I am using the terms settings and preferences at different places, but they are the same.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Subproject setup\
+\pard\pardeftab720\sl486\sa540
+
+\f1\b0\fs36 \cf3 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 cd
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  into your tweak folder and start the theos-templates-menu with
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /opt/theos/bin/nic.pl
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . Choose the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 preferencebundle
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  option and follow the wizard. I prefer to use my tweaks name here with the additional "prefs" at the end. In my case it becomes "com.jontelang.sliderchangerprefs".\
+\pard\pardeftab720\sl486\sa540
+\cf3 \
+Once done your tweak folder should now look like this, with an extra folder inside it.\
+\
+There have been some changes inside the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 makefile
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  also which you can look at, although it is not very important at the moment.\
+By now you should be able to just 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make package install
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to verify that there is an additional entry with your tweaks name.\
+It should look something like this.\
+\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Changing the text/icon/etc\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Blabla\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Changing the icon\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 As you've noticed there is no icon for the entry on the settings panel. This is easy to change. The file 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 entry.plist
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (inside the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /sliderchangerprefs/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  directory) contains an entry called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 icon = SliderChangerPrefs.png
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .\
+Now go to the folder 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /sliderchangerprefs/resources/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and put a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 58x58
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  file here, and name it 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SliderChangerPrefs@2x.png
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . For non-retina devices you should also put a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 29x29
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  file here with the same name, removing the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @2x
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  part.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Changing the settings\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Now you'd go into the newly created folder (in your tweaks folder) and you should see another folder called "resources". Open this and find a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .plist
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  file with the contents.\
+The file will contain the following (or similar, at least):\
+\pard\pardeftab720\sl486
+
+\f1 \cf10 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <plist\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  \cf11 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec11 version=\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 "1.0"\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 >\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <dict>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+    \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 items\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+    \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <array>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <dict>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 cell\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 PSGroupCell\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 label\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 SliderChangerPrefs First Page\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </dict>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <dict>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 cell\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 PSSwitchCell\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 default\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <true/>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 defaults\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 test\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 key\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 AwesomeSwitch1\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 label\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+            \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Awesome Switch 1\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </dict>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+    \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </array>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+    \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 title\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </key>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+    \cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 <string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 test\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </string>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </dict>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\cf10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 </plist>\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 You can change it so that it looks like this (using your own name instead of my "jontelang").\
+\pard\pardeftab720\sl486
+\cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Accessing saved settings\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Your settings area is now completed, it will save the settings to a file in the directory (see above) and it is now time for your tweak to read it. And with the
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 PostNotification
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  it will also be able to reload it instantly without the need for a respring.\
+Open up your 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Tweak.xm
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and change it to this.\
+\pard\pardeftab720\sl486
+
+\f2\b \cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 static
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 BOOL
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  SCisEnabled 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 YES\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ; 
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Default value
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 static
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  NSString
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  SCtext 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 nil\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 hook SBLockScreenView\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )setCustomSlideToUnlockText
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 id
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )arg1\
+\{\
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 if
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (SCtext 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 &&
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  SCisEnabled)\
+    \{\
+        arg1 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  SCtext;\
+    \}\
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 orig(arg1);\
+\}\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 end\
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 static
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  loadPrefs()\
+\{\
+    NSMutableDictionary 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 prefs 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  [[NSMutableDictionary alloc] initWithContentsOfFile
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"/var/mobile/Library/Preferences/com.jontelang.sliderchangerprefs.plist"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ];\
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 if
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (prefs)\
+    \{\
+        SCisEnabled 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  ( [prefs objectForKey
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SCisEnabled"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ] 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ?
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  [[prefs objectForKey
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SCisEnabled"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ] boolValue] 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  SCisEnabled );\
+        SCtext 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  ( [prefs objectForKey
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SCtext"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ] 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ?
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  [prefs objectForKey
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SCtext"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ] 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  SCtext );\
+        [SCtext retain];\
+    \}\
+    [prefs release];\
+\}\
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ctor \
+\{\
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 NULL\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 , (CFNotificationCallback)loadPrefs, CFSTR(\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 "com.jontelang.sliderchangerprefs/settingschanged"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ), \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 NULL\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 , CFNotificationSuspensionBehaviorCoalesce);\
+    loadPrefs();\
+\}\
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 The 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %ctor
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  thing here is a method which will run when the tweak is loaded, it will only run once (per respring) and is the place we use to register the tweak for listening to our 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 PostNotification
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . The register method specifies which string to listen to and which method to call when it gets the correct string. I've created a method called "loadPrefs" that is run each time. This method simply loads the settings-saved file and reads the values from it.\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 TIP: Remember to (as in my case) make sure the value is actually present in the dictionary/file. Otherwise you might end up with mismatched default values and so on.\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 The rest of the tweak is pretty straight forward. I just create some static variables and add the extra check in 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 setCustomSlideToUnlockText
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to make sure nothing is modified if the tweak is, for example, disabled.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The final steps\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 These are the final steps before submitting the tweak to a repo. Some things to check/think about.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Resetting the version\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 You might have noticed that your tweaks version increases its build number each time you do 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 make package
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . When you release it you might not want to have the version as 0.0.1-2526. Maybe you want to have it as 1.0 or similar.\
+To change this you simply open the file 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 control
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and change the version to whatever you want.\
+Note that this will still not get rid of the build number, so if you set it to 1.0 the actual version will be 1.0-1. For your next version you may want to have it as 1.0-2, but the actualy version might be 1.0-65 at the point of release. To reset the counter to 0 you will go to an invisible folder called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .theos
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  which lies in the tweaks project root folder. Inside this there will be another folder called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 packages
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . Open this folder and delete the files inside it. Next time you build you will have the version at 1.0-1 again.\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 NOTE: These versions might not even matter (at least when submitting to the BigBoss repo) as the repos de-assemble and re-assemble the packages when they get them. Also, when submitting to the BigBoss repo you can enter the version number. For more info though, ask the repo managers.\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Submitting to a repo\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 The repos have pretty straight forward submission links/processes so each website will have details on how to submit to it. If you ae unsure about something you will always be able to email the owners.\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "https://www.myrepospace.com/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 MyRepoSpace}} - If you want a private repo where you can manage everything by yourself, good for beta testing.\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://www.thebigboss.org/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 BigBoss}} - Is a default repo.\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://www.modmyi.com/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 ModMyi}} - Is also a default repo, although I don't have much experience with hosting here it seems as good as BigBoss.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Identifiers\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Your tweak has an identifier, in this case it is 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 com.jontelang.sliderchanger
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . If you do not own the domain (again, this case) "jontelang.com" the repo will change the tweak identifier to e.g. 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 org.bigboss.sliderchanger
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . This can be important if you are doing something in regards to piracy-checks which relies on the identifiers (more on this later).\
+If you do own the domain in question, tell this to the repo managers so that they can avoid changing it.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Paid vs free\
+\pard\pardeftab720\sl486\sa540
+
+\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Paid tweaks
+\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  can take up to a week, usually 5 days. To submit a paid tweak you will need (BigBoss experience now) to sign some form (digitally is fine) which takes some day(s) to process. You will also need a {\field{\*\fldinst{HYPERLINK "http://www.paypal.com/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 PayPal}} account. After submitting a paid tweak you will get links to a basic management website where you can do some things.\
+
+\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Free tweaks
+\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  takes maybe 1-2 days from the submission process to appear in Cydia.\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 NOTE: All times as super approximate and can change with many many variables\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Advanced development\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Once the above guide is polished I will add some more information here.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Using a disassembler\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 In this article I will very briefly go through how you can use a disassembler like{\field{\*\fldinst{HYPERLINK "http://www.hopperapp.com/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Hopper}} or {\field{\*\fldinst{HYPERLINK "https://www.hex-rays.com/products/ida/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 IDA}} to inspect other tweaks (and iOS binaries) for research or fun. If you do not know what a disassembler is, just google it.\
+First of all you will need a dylib. You can either get them from your device, in this location 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /Library/MobileSubstrate/DynamicLibraries/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  or from a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 .deb
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  file if you unpack it. This file is what you will inspect so you'd now open it in your disassembler of choice.\
+I have put together a very small tweak just for this example, it is almost the same as "SliderChanger" that we made in chapter 3. We will try to get an idea of what the tweak does without the source code available.\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 NOTE: This example is extremely simple.\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 So once we open 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SliderChanger.dylib
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  we get this.\
+\
+Pay little attention to the assembly code and look at the list to your left. In this case I press "strings" at the top and I get this.\
+\
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 NOTE: All of these strings are obviously also shown in the area to the right, although you'd have to scan for them.\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 And from here on I can basically guess exactly what is happening in the tweak, mostly because the tweak itself is very simple.\
+\pard\pardeftab720\sl486\sa540
+
+\f1 \cf3 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SBLockScreenView
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  is a class in the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SpringBoard
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  so we can now assume the tweak hooks into that class. Looking at the headers for this file we do find that it has a method called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 setCustomSlideToUnlockText:
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  so wen can now assume the tweak also hooks into that method. The method 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 getCustomName
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  is nowhere to be found so it must be something that is within the tweak. In fact, in the previous screenshot we saw something named 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 addMethod
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 , so we could actually believe that the tweak adds this method to the class 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SBLockScreenView
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . Logos has a keyword called 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %new
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  which makes it easy to add methods to classes.\
+Clicking the links here will take us to the line in the tight panel.\
+\pard\pardeftab720\sl486\sa540
+\cf3 \
+\pard\pardeftab720\sl486
+\cf5 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec5 NOTE: Now I am not really too knowledgable about disassembling things, or assembly code for that matter, but from what I've gathered looking at many tweaks this here is an order of executions. I'll have another example later.\cb1 \
+\pard\pardeftab720\sl486\sa540
+\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 So here we can see that 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 getCustomName
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  is called, and then
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 setCustomSlideToUnlockText:
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  is called after that. Seems fair enough right.\
+Here is the actual source code for the tweak.\
+\pard\pardeftab720\sl486
+
+\f2\b \cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @interface
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 SBLockScreenView
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (NSString
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 )
+\f2\b \cf14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec14 getCustomName
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @end
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 hook SBLockScreenView\
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 new\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (NSString
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 )getCustomName\{\
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 return
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  \cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SliderChanger7"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+\}\
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )setCustomSlideToUnlockText
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 id
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )arg1\
+\{\
+    arg1 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  [self getCustomName];\
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 orig(arg1);\
+\}\
+\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 end\
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 This seems to be pretty much what we could gather from the disassembler. A method was added, called and then the original code was called.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Another example - Boover\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This is a disassembly from my tweak Boover, which is more advanced and thus have way more to look at in a disassembler. I won't go into detail in this one, but the tweak is open source on github, although it is currently a couple of versions behind I think. Just search for Boover to have a look.\
+\
+You can see that there are a lot of things, many which looks like variable (which they are). You can find that it uses classes like 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SBIconView
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and so on.\
+\
+This is the order that the tweak is executing (one part, at least).\
+A rough overview, it looks like it reads some file and gets some values. Probably reading settings here. It then looks like it hooks some methods like 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 updateBadge
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ,
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 configureAnimatedForIcon:
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and so on. It then looks like it is creating an image with 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 makeImage
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and the subsequent calls down to 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 renderInContext:
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . And it goes on and on like this.\
+In fact all of the above are correct, Boover will look at the icons colors and then render a new one based on that and then it will set the image as the badge.\
+This is how I personally use disassemblers. As you can see I don't get exactly HOW someone does something but I do get a rough overview about what they are doing. Which is great for inspiration if you don't know where to begin looking in the headers.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Console output options\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 In this article I will show you some different ways of looking at your output, usually from 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NSLog
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  calls.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Xcode organizer\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Xcode has a built in viewer which you can use. It is simple, feature-less and does not give you any filtering options. It does have the crash-logs just a click away so I still use it from time to time when I have lots of crashes in a tweak.\
+To use it, read my notes in chapter 3. {\field{\*\fldinst{HYPERLINK "http://www.jontelang.com/guide/chapter3/console-output.html"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Link}}.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 rpetrich's deviceconsole\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This is a neat little console app which is open source, and as you see above it is built by rpetrich so that's a little stamp of quality right there.\
+To use it you should download the source code from {\field{\*\fldinst{HYPERLINK "https://github.com/rpetrich/deviceconsole"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 here}} and simply build it. After building it you can put it in, for example, 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 /bin/
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to make it startable by the command
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 deviceconsole
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  in your terminal.\
+Once you fire it up and have the device connected with a USB cord you will get something like this.\
+\
+Which is in some ways better than the organizer, but still there is a boatload of information you don't need to see. What you can do now is to do something like this
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 deviceconsole | grep "snapper"
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and it will only output lines with the word "snapper" in them. I usually write my 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NSLog
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 s like 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NSLog(@"[TweakName] output")
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 which works well for the output filtering.\
+\
+You can also do this 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 deviceconsole -p SpringBoard
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  to output only things from, in this case, the process named "SpringBoard". This will, unlike the above, preserv some colors in the console.\
+\
+You can of course combine them like 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 deviceconsole -p SpringBoard | grep "snapper"
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  too if you wish.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Snippets\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 This is a collection of random snippets you might find useful. I've written some text but you should be able to just have a look at the code if you want to.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Share-sheet from SpringBoard\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 While working on Snapper I was asked to include share options. These includes things like "share on facebook" and "copy image" actions. So here is how to do this.\
+The tweak named above creates a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIWindow
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  where all action happens. And we want to open a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIActivityViewController
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  where all sharing is then taken care of by iOS (6+). A 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIWindow
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  cannot, by itself, open a ViewController. It needs to be opened in another ViewController it seems.\
+The solution is to simply create a 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIViewController
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  for the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIWindow
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  and use that, the controller is then set as the rootViewController.\
+\pard\pardeftab720\sl486
+
+\f1 \cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIViewController 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 tempVC 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  [[UIViewController alloc] init];\
+self.rootViewController  
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  tempVC;\
+\
+UIActivityViewController 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 activityController 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  \
+        [[UIActivityViewController alloc] \
+            initWithActivityItems
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @[self.imageToShare] \
+            applicationActivities
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 nil\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ];\
+\
+activityController.excludedActivityTypes 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  @[UIActivityTypePrint];\
+\
+activityController.completionHandler 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ^
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (NSString 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 activityType, 
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 BOOL
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  completed)\{ \
+    
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 if
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ( completed 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 ==
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 YES\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  )\{\
+        
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // This means the sharing was completed
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Pressing "cancel" on eg. the mail will set completed to 'NO'
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+    \}
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 else
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \{\
+        
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Because I only use the UIViewController temporarily
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // I decided to remove it here. It should probably not
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // be done like this but hey, it works fine.
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+        self.rootViewController 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  Nil;\
+        [tempVC release];\
+        [activityController release];\
+    \}\
+\};\
+\
+\pard\pardeftab720\sl486
+
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Show it
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+[tempVC presentViewController
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 activityController animated
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf12 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec12 YES\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  completion
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Nil];\
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 If someone knows a way to present the share controller directly from SpringBoards rootViewController feel free to send me an email, because I could not get this to work.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Getting the SpringBoard object\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Sometimes you want to use the methods within the 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 Springboard
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  so here is a way to do just that! It is really simple and it is basically just an 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 UIApplication
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . For example if you want to respring there is (since iOS6 or 7 I believe) a method for just that.\
+\pard\pardeftab720\sl486
+
+\f1 \cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 SpringBoard 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 springboard 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (SpringBoard
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 *
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 )[NSClassFromString(\cf9 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec9 @"SpringBoard"\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ) sharedApplication];\
+[springboard relaunchSpringBoard];\
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 And if you get a compile error you might want to declare its interface before doing that.\
+\pard\pardeftab720\sl486
+
+\f2\b \cf3 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @interface
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 SpringBoard
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  : 
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 UIApplication
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )
+\f2\b \cf14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec14 relaunchSpringBoard
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ; 
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Respring
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @end
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 And that's it.\
+Instead of using 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 NCClassFromString("SpringBoard")
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  you can use
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 objc_getClass("SpringBoard")
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  or with theos 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %c(SpringBoard)
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 . I actually think the last one it preferred while using ~~theos~~ logos, but any one works.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Changing or getting the volume\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 In XPasscode and Piano passcode I needed to make sure the volume was not way too loud, that can be done with the class 
+\f1 \cb6 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 VolumeControl
+\f0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  as seen below.\
+\pard\pardeftab720\sl486
+
+\f3\i \cf13 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Interface might be needed
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl486
+
+\f2\b \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @interface
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 VolumeControl
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 +
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 id
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )
+\f2\b \cf14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec14 sharedVolumeControl
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 void
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )
+\f2\b \cf14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec14 setMediaVolume:
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 float
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )\cf11 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec11 arg1\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 -
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  (
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 float
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 )
+\f2\b \cf14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec14 getMediaVolume
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ;\
+
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 @end
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \
+\
+\pard\pardeftab720\sl486
+
+\f3\i \cf13 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // And usage
+\f1\i0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl486
+
+\f2\b \cf8 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec8 float
+\f1\b0 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  volume 
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 =
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0  [[
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 c(VolumeControl) sharedVolumeControl] getMediaVolume];\
+[[
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 %
+\f1\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 c(VolumeControl) sharedVolumeControl] setMediaVolume
+\f2\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 :
+\f1\b0 \cf15 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec15 0.1f\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 ];\
+\pard\pardeftab720\sl486\sa540
+
+\f0 \cf3 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 This should work for iOS5,6,7 and probably 8 too.\
+\pard\pardeftab720\sl660\sa118
+
+\b\fs66 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Resources\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 To add / change / something in this section please go ahead to the {\field{\*\fldinst{HYPERLINK "http://jontelang.com/guide/chapter99/Contact-&-contribute.html"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 contact & contribute section}}.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Websites\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "http://iphonedevwiki.net/index.php/Main_Page"}}{\fldrslt 
+\b0\fs36 \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 iPhoneDevWiki}}
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  - More info on the iphonedevwiki, this is more technical.\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://iphonedevwiki.net/index.php/Preferences_specifier_plist"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Settings info}} - Documented PSSpecifiers (settings key-thingys).\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://sharedinstance.net/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 SharedInstance}} - Has tutorials (only one at the moment).\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://developer.limneos.net/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 http://developer.limneos.net/}} - Has got headers for lots of iOS versions, all the way back to iOS 3.\uc0\u8232 Other random tutorials - {\field{\*\fldinst{HYPERLINK "http://iky1e.tumblr.com/post/9561218739/jailbroken-development-starter-pack"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 1}}, {\field{\*\fldinst{HYPERLINK "http://brandontreb.com/beginning-jailbroken-ios-development-getting-the-tools"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 2}}\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "https://github.com/WinneonSword/tutorial-repository"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Guide to create your own repo}} - as it says.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Communities\
+\pard\pardeftab720\sl486\sa540
+
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 irc.saurik.com #theos is THE best way for direct contact with pretty much all active developers (don't quote me on this though).\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://www.reddit.com/r/jailbreak/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 /r/jailbreak}} is good.\uc0\u8232 {\field{\*\fldinst{HYPERLINK "http://www.reddit.com/r/jailbreakdevelopers/"}}{\fldrslt \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 /r/jailbreakdevelopers}}, I just saw this one 30 seconds ago, pretty small.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Files\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "http://cdn.hbang.ws/dl/libsubstrate_arm64.dylib"}}{\fldrslt 
+\b0\fs36 \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 libsubstrate_arm64.dylib}}
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Open source tweaks\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "http://tweakweek.com/"}}{\fldrslt 
+\b0\fs36 \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 Tweakweek}}
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3  - Lists many open sourced small tweaks.\
+\pard\pardeftab720\sl320\sa297
+
+\b\fs32 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Headers\
+\pard\pardeftab720\sl486\sa540
+{\field{\*\fldinst{HYPERLINK "https://github.com/MP0w/iOS-Headers"}}{\fldrslt 
+\b0\fs36 \cf4 \expnd0\expndtw0\kerning0
+\ul \ulc4 \outl0\strokewidth0 \strokec4 MP0w iOS 5 up to 7}}
+\b0\fs36 \cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\
+}
